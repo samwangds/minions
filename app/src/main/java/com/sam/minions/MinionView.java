@@ -19,7 +19,6 @@ import java.util.Random;
  *         2016/1/18 10:30
  */
 public class MinionView extends View {
-    private static final int DEFAULT_SIZE = 200; //View默认大小
 
     public MinionView(Context context) {
         super(context);
@@ -43,6 +42,7 @@ public class MinionView extends View {
         setMeasuredDimension(measure(widthMeasureSpec, true), measure(heightMeasureSpec, false));
     }
 
+    private static final int DEFAULT_SIZE = 200; //View默认大小
     private int widthForUnspecified;
     private int heightForUnspecified;
 
@@ -87,14 +87,13 @@ public class MinionView extends View {
     protected void onDraw(Canvas canvas) {
         initParams();
         initPaint();
-        drawFeetShadow(canvas);
+        drawFeetShadow(canvas);//脚下的阴影
         drawFeet(canvas);//脚
         drawHands(canvas);//手
         drawBody(canvas);//身体
         drawClothes(canvas);//衣服
         drawEyesMouth(canvas);//眼睛,嘴巴
         drawBodyStroke(canvas);//最后画身体的描边，可以摭住一些过渡的棱角
-
     }
 
     private Paint mPaint;
@@ -230,7 +229,7 @@ public class MinionView extends View {
         canvas.drawPath(path, mPaint);
         initPaint();
         mPaint.setStyle(Paint.Style.FILL_AND_STROKE);
-        canvas.drawCircle(rect.left + h / 4, rect.top + h / 4, mStrokeWidth, mPaint);
+        canvas.drawCircle(rect.left + h / 5, rect.top + h / 4, mStrokeWidth*0.7f, mPaint);
 
         //画右吊带
 
@@ -252,7 +251,7 @@ public class MinionView extends View {
         canvas.drawPath(path, mPaint);
         initPaint();
         mPaint.setStyle(Paint.Style.FILL_AND_STROKE);
-        canvas.drawCircle(rect.right - h / 4, rect.top + h / 4, mStrokeWidth, mPaint);
+        canvas.drawCircle(rect.right - h / 5, rect.top + h / 4, mStrokeWidth*0.7f, mPaint);
 
         //中间口袋
         initPaint();

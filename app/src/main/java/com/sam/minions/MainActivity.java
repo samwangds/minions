@@ -3,6 +3,8 @@ package com.sam.minions;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -33,12 +35,12 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-//        mMinionView = (MinionView) findViewById(R.id.minion);
-//
-//        mRecyclerView = (RecyclerView) findViewById(R.id.recyclerview);
-//        mRecyclerView.setLayoutManager(new GridLayoutManager(this,5));
-//        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
-//        mRecyclerView.setAdapter(new MainAdapter());
+        mMinionView = (MinionView) findViewById(R.id.minion);
+
+        mRecyclerView = (RecyclerView) findViewById(R.id.recyclerview);
+        mRecyclerView.setLayoutManager(new GridLayoutManager(this,5));
+        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
+        mRecyclerView.setAdapter(new MainAdapter());
     }
 
     private static class MainAdapter extends RecyclerView.Adapter<MinionsHolder> {
