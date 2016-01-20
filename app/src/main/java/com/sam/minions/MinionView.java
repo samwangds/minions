@@ -129,8 +129,7 @@ public class MinionView extends View {
         radius = bodyWidth / 2;
         footHeigh = radius * 0.4333f;
 
-        handsHeight = (getHeight() + bodyHeigh) / 2 + offset - radius * 2.15f;
-
+        handsHeight =  (getHeight() + bodyHeigh) / 2   + offset - radius * 1.65f ;
 
     }
 
@@ -240,10 +239,10 @@ public class MinionView extends View {
         mPaint.setStrokeWidth(mStrokeWidth);
         mPaint.setStyle(Paint.Style.FILL);
         path.reset();
-        path.moveTo(rect.left - w + 2 * radius - offset, rect.top - w / 2);
+        path.moveTo(rect.left - w + 2 * radius - offset, handsHeight);
         path.lineTo(rect.right - h / 4, rect.top + h / 2);
         path.lineTo(rect.right - h / 4 - smallW, rect.top + h / 2 - smallW);
-        path.lineTo(rect.left - w + 2 * radius - offset, rect.top - w / 2 - smallW2);
+        path.lineTo(rect.left - w + 2 * radius - offset, handsHeight- smallW2);
 
         canvas.drawPath(path, mPaint);
         initPaint();
