@@ -401,7 +401,7 @@ public class MinionView extends View {
 
     private void drawHands(Canvas canvas) {
         mPaint.setStrokeWidth(mStrokeWidth);
-        mPaint.setStyle(Paint.Style.FILL);
+        mPaint.setStyle(Paint.Style.FILL_AND_STROKE);
         mPaint.setColor(colorBody);
 
 //        左手
@@ -412,13 +412,16 @@ public class MinionView extends View {
 
         path.moveTo(bodyRect.left, handsHeight);
         path.lineTo(bodyRect.left - hypotenuse / 2, handsHeight + hypotenuse / 2);
-        path.lineTo(bodyRect.left, bodyRect.bottom - radius);
+        path.lineTo(bodyRect.left +offset, bodyRect.bottom - radius +offset);
+        path.lineTo(bodyRect.left  ,handsHeight);//增加兼容性,path没闭合在一起机子上会使手的下面的点没办法与裤子重合
         canvas.drawPath(path, mPaint);
 
         mPaint.setStrokeWidth(mStrokeWidth);
         mPaint.setStyle(Paint.Style.STROKE);
         mPaint.setColor(colorStroke);
         canvas.drawPath(path, mPaint);
+
+
 
 //        右手
         path.reset();
@@ -427,7 +430,8 @@ public class MinionView extends View {
 
         path.moveTo(bodyRect.right, handsHeight);
         path.lineTo(bodyRect.right + hypotenuse / 2, handsHeight + hypotenuse / 2);
-        path.lineTo(bodyRect.right, bodyRect.bottom - radius);
+        path.lineTo(bodyRect.right  -offset, bodyRect.bottom - radius +offset);
+        path.lineTo(bodyRect.right, handsHeight);
         canvas.drawPath(path, mPaint);
 
         mPaint.setStrokeWidth(mStrokeWidth);
@@ -441,12 +445,14 @@ public class MinionView extends View {
         path.moveTo(bodyRect.left, handsHeight + hypotenuse / 2 - mStrokeWidth);
         path.lineTo(bodyRect.left - mStrokeWidth * 2, handsHeight + hypotenuse / 2 + mStrokeWidth * 2);
         path.lineTo(bodyRect.left, handsHeight + hypotenuse / 2 + mStrokeWidth);
+        path.lineTo(bodyRect.left, handsHeight + hypotenuse / 2 - mStrokeWidth);
         canvas.drawPath(path, mPaint);
 
         path.reset();
         path.moveTo(bodyRect.right, handsHeight + hypotenuse / 2 - mStrokeWidth);
         path.lineTo(bodyRect.right + mStrokeWidth * 2, handsHeight + hypotenuse / 2 + mStrokeWidth * 2);
         path.lineTo(bodyRect.right, handsHeight + hypotenuse / 2 + mStrokeWidth);
+        path.lineTo(bodyRect.right, handsHeight + hypotenuse / 2 - mStrokeWidth);
         canvas.drawPath(path, mPaint);
 
     }
