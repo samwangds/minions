@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 public class MainActivity extends AppCompatActivity {
     private MinionView mMinionView;
     private RecyclerView mRecyclerView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,10 +25,10 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(mMinionView.isShown()){
+                if (mMinionView.isShown()) {
                     mMinionView.setVisibility(View.GONE);
                     mRecyclerView.setVisibility(View.VISIBLE);
-                }else {
+                } else {
                     mMinionView.setVisibility(View.VISIBLE);
                     mRecyclerView.setVisibility(View.GONE);
                 }
@@ -38,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
         mMinionView = (MinionView) findViewById(R.id.minion);
 
         mRecyclerView = (RecyclerView) findViewById(R.id.recyclerview);
-        mRecyclerView.setLayoutManager(new GridLayoutManager(this,5));
+        mRecyclerView.setLayoutManager(new GridLayoutManager(this, 5));
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
         mRecyclerView.setAdapter(new MainAdapter());
     }
@@ -63,15 +64,17 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private static class MinionsHolder extends RecyclerView.ViewHolder{
+    private static class MinionsHolder extends RecyclerView.ViewHolder {
         private MinionView mMinionView;
+
         public MinionsHolder(View itemView) {
             super(itemView);
             mMinionView = (MinionView) itemView;
         }
-        public void randomBodyColor(){
+
+        public void randomBodyColor() {
             mMinionView.randomBodyColor();
         }
     }
 
-    }
+}
